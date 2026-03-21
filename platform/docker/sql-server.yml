@@ -14,6 +14,7 @@ services:
       - mssql-data:/var/opt/demo/mssql/data
       - mssql-log:/var/opt/demo/mssql/log
       - mssql-backup:/var/opt/demo/mssql/backup
+      - ../../data:/var/opt/cdc/data
 
 networks:
   net:
