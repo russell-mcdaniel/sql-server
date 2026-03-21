@@ -1,4 +1,4 @@
-USE [Database];
+USE RedGateSqlMonitor;
 GO
 
 SELECT
@@ -42,5 +42,17 @@ ALTER INDEX ALL ON [Schema].[Table] REORGANIZE;
 GO
 
 ALTER INDEX ALL ON [Schema].[Table] REBUILD;
+GO
+
+SELECT
+	schema_name(t.schema_id)			AS schema_name,
+	t.name								AS table_name,
+	N'ALTER INDEX ALL ON [' + schema_name(t.schema_id) + N'].[' + t.name + N'] REBUILD WITH (SORT_IN_TEMPDB = ON, ONLINE = ON);'
+										AS index_sql
+FROM
+	sys.tables t
+ORDER BY
+	schema_name(t.schema_id),
+	t.name;
 GO
 */

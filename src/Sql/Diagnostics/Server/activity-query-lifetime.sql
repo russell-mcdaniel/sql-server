@@ -80,10 +80,10 @@ AS
 SELECT
 	qs.last_execution_time																	AS ex_last_time,
 	qs.creation_time																		AS ex_create_time,
-	CAST(DATEDIFF(millisecond, qs.creation_time, SYSDATETIME()) / 1000.0 AS decimal(13,3))	AS ex_exist,
+	CAST(DATEDIFF_BIG(millisecond, qs.creation_time, SYSDATETIME()) / 1000.0 AS decimal(13,3))	AS ex_exist,
 	qs.execution_count																		AS ex_count,
 	CASE
-		WHEN DATEDIFF(millisecond, qs.creation_time, SYSDATETIME()) > 0 THEN CAST(qs.execution_count / (DATEDIFF(millisecond, qs.creation_time, SYSDATETIME()) / 1000.0) AS decimal(10,1))
+		WHEN DATEDIFF_BIG(millisecond, qs.creation_time, SYSDATETIME()) > 0 THEN CAST(qs.execution_count / (DATEDIFF_BIG(millisecond, qs.creation_time, SYSDATETIME()) / 1000.0) AS decimal(10,1))
 		ELSE CAST(qs.execution_count AS decimal(10,1))
 	END 																					AS ex_per_sec,
 
