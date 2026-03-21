@@ -1,4 +1,4 @@
-USE CubexOps;
+USE [Database];
 GO
 
 -- Row group count by state.
@@ -59,8 +59,8 @@ ORDER BY
 GO
 
 -- Reorganize index.
-ALTER INDEX cs_LoginEvent
-	ON dbo.LoginEvent
+ALTER INDEX cs_TableName
+	ON dbo.TableName
 	REORGANIZE;
 GO
 */

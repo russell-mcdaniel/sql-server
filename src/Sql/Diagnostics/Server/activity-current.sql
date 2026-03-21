@@ -17,7 +17,7 @@ SELECT
 	r.writes													AS lw_tot,
 	r.open_transaction_count									AS open_tx,
 	r.status													AS status,
---	r.percent_complete											AS pct_complete,
+	r.percent_complete											AS pct_complete,
 	CASE r.database_id
 		WHEN 32767 THEN N'resource'
 		ELSE DB_NAME(r.database_id)
